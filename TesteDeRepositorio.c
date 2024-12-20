@@ -3,8 +3,7 @@
 void converterComprimento();
 void converterMassa();
 void converterVolume();
-//Aqui ficara a função de converter temperatura
-//apenas um teste de 
+void converterTemperatura(); // Função para conversão de temperatura
 
 int main() {
     int escolha;
@@ -14,6 +13,7 @@ int main() {
         printf("1. Comprimento\n");
         printf("2. Massa\n");
         printf("3. Volume\n");
+        printf("4. Temperatura\n"); // Adicionada opção de temperatura
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &escolha);
@@ -22,6 +22,7 @@ int main() {
             case 1: converterComprimento(); break;
             case 2: converterMassa(); break;
             case 3: converterVolume(); break;
+            case 4: converterTemperatura(); break; // Chamada para a função de temperatura
             case 0: printf("Saindo...\n"); break;
             default: printf("Opção inválida. Tente novamente.\n");
         }
@@ -98,6 +99,34 @@ void converterVolume() {
         case 2: printf("%.2lf litros = %.2lf metros cúbicos\n", valor, valor / 1000); break;
         case 3: printf("%.2lf mililitros = %.2lf litros\n", valor, valor / 1000); break;
         case 4: printf("%.2lf metros cúbicos = %.2lf litros\n", valor, valor * 1000); break;
+        default: printf("Opção inválida.\n");
+    }
+}
+
+void converterTemperatura() {
+    int escolha;
+    double valor;
+
+    printf("\n*** Conversão de Temperatura ***\n");
+    printf("1. Celsius para Fahrenheit\n");
+    printf("2. Celsius para Kelvin\n");
+    printf("3. Fahrenheit para Celsius\n");
+    printf("4. Fahrenheit para Kelvin\n");
+    printf("5. Kelvin para Celsius\n");
+    printf("6. Kelvin para Fahrenheit\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &escolha);
+
+    printf("Digite o valor a ser convertido: ");
+    scanf("%lf", &valor);
+
+    switch (escolha) {
+        case 1: printf("%.2lf Celsius = %.2lf Fahrenheit\n", valor, (valor * 9/5) + 32); break;
+        case 2: printf("%.2lf Celsius = %.2lf Kelvin\n", valor, valor + 273.15); break;
+        case 3: printf("%.2lf Fahrenheit = %.2lf Celsius\n", valor, (valor - 32) * 5/9); break;
+        case 4: printf("%.2lf Fahrenheit = %.2lf Kelvin\n", valor, (valor - 32) * 5/9 + 273.15); break;
+        case 5: printf("%.2lf Kelvin = %.2lf Celsius\n", valor, valor - 273.15); break;
+        case 6: printf("%.2lf Kelvin = %.2lf Fahrenheit\n", valor, (valor - 273.15) * 9/5 + 32); break;
         default: printf("Opção inválida.\n");
     }
 }
