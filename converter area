@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main (){
+    int escolha;
+    double dados;
+    printf("Informe qual converssão você desefa:\n");
+    printf("1. Centimetros quadradados (Cm²) ---> Metros quadradros (M²)\n");
+    printf("2. Metros quadrados (M²) ---> Centimetros Quadrados (Cm²)\n");
+    scanf("%d""%lf", &escolha, &dados);
+    
+    if(escolha == 1){
+        printf("%1.2f M² = %.4f Cm²", dados, dados*10000);
+    }else{
+        printf("%1.2f Cm² = %.4f M²", dados, dados/10000);
+    }
+}
