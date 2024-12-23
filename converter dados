@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    int med1, med2;
+    double dados;
+    printf("Informe qual conversão de dados você deseja:\n");
+    printf("Ex: 1 3 -> Bits -> Kylobytes\n");
+    printf("1.Bits\n 2.bytes\n 3.Kilobytes (KB)\n 4.Megabytes (MB)\n 5.Gigabytes (GB)\n 6.Terabytes (TB)\n");
+    printf("E informe o valor do dado a ser convertido\n");
+    scanf("%d""%d" "%lf", &med1, &med2, &dados);
+// foi usadao 1 byte =8 bits
+// 1kilobyte = 1024 bytes, 1 Megabyte= 1024 Kilobytes, 1 Gigabygotte= 1024 Megabytes, 1  Terabyte =1024 Gigabytes
+// o primeiro switch verifique qual a grandeza do dado foi dada
+    switch (med1){
+            case 1:
+            // o segundo switch e para a medida de conversão necessária
+            switch(med2){
+                case 2: printf("%1.f Bits = %.15f bytes\n", dados, dados/8);break;
+                case 3: printf("%1.f Bits = %.15f Kilobytes\n", dados, dados/(8*1024));break;
+                case 4: printf("%1.f Bits = %.15f Megabytes\n", dados, dados/(8*(pow(1024, 2))));;break;
+                case 5: printf("%1.f Bits = %.15f Gigabytes\n", dados, dados/(8*(pow(1024, 3))));break;
+                case 6: printf("%1.f Bits = %.15f Terabytes\n", dados, dados/(8*(pow(1024, 4))));break;
+                default: printf("Opção inválida.\n");
+            }
+            break;
+            case 2: 
+            switch(med2){
+                case 1: printf("%1.f Byts = %.15f bits\n", dados, dados*8);break;
+                case 3: printf("%1.f Byts = %.15f Kilobytes\n", dados, dados/(1024) );break;
+                case 4: printf("%1.f Byts = %.15f Megabytes\n", dados, dados/(pow(1024, 2)) );break;
+                case 5: printf("%1.f Byts = %.15f Gigabytes\n", dados, dados/(pow(1024, 3)) );break;
+                case 6: printf("%1.f Byts = %.15f Terabytes\n", dados, dados/(pow(1024, 4)) );break;
+                default: printf("Opção inválida.\n");
+            }
+            break;
+            case 3: 
+            switch(med2){
+                case 1: printf("%1.f Kilobytes = %.15f bits\n", dados, dados*(8*1024));break;
+                case 2: printf("%1.f Kilobytes = %.15f bytes\n", dados, dados*1024);break;
+                case 4: printf("%1.f Kilobytes = %.15f Megabytes\n", dados, dados/1024);break;
+                case 5: printf("%1.f Kilobytes = %.15f Gigabytes\n", dados, dados/(pow(1024, 2)));break;
+                case 6: printf("%1.f Kilobytes = %.15f Terabytes\n", dados, dados/(pow(1024, 3)));break;
+                default: printf("Opção inválida.\n");
+            }
+            break;
+            case 4: 
+            switch(med2){
+                case 1: printf("%1.f Megabytes = %.15f bits\n", dados, dados*(8*(pow(1024, 2))));break;
+                case 2: printf("%1.f Megabytes = %.15f bytes\n", dados, dados*(pow(1024, 2)));break;
+                case 3: printf("%1.f Megabytes = %.15f Kilobytes\n", dados, dados*1024);break;
+                case 5: printf("%1.f Megabytes = %.15f Gigabytes\n", dados, dados/1024);break;
+                case 6: printf("%1.f Megabytes = %.15f Terabytes\n", dados, dados/(pow(1024, 2)));break;
+                default: printf("Opção inválida.\n");
+            }
+            break;
+            case 5: 
+            switch(med2){
+                case 1: printf("%1.f GigaByts = %.15f bits\n", dados, dados*(8*(pow(1024, 3))));break;
+                case 2: printf("%1.f GigaByts = %.15f bytes\n", dados, dados*(pow(1024, 3)));break;
+                case 3: printf("%1.f GigaByts = %.15f Kilobytes\n", dados, dados*(pow(1024, 2)));break;
+                case 4: printf("%1.f GigaByts = %.15f Megabytes\n", dados, dados*1024);break;
+                case 6: printf("%1.f GigaByts = %.15f Terabytes\n", dados, dados/1024);break;
+                default: printf("Opção inválida.\n");   }
+            break;
+            case 6: 
+            switch(med2){
+                case 1: printf("%1.f TeraByts = %.15f bits\n", dados, dados*(8*(pow(1024, 4))));break;
+                case 2: printf("%1.f TeraByts = %.15f bytes\n", dados, dados*(pow(1024, 4)));break;
+                case 3: printf("%1.f TeraByts = %.15f Kilobytes\n", dados, dados*(pow(1024, 3)));break;
+                case 4: printf("%1.f TeraByts = %.15f Megabytes\n", dados, dados*(pow(1024, 2)));break;
+                case 5: printf("%1.f TeraByts = %.15f Gigabytes\n", dados, dados*1024);break;
+                default: printf("Opção inválida.\n");   }
+            break;
+    }
+    return 0;
+
+}
