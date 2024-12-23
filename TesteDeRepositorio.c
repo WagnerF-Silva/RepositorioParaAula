@@ -4,6 +4,7 @@ void converterComprimento();
 void converterMassa();
 void converterVolume();
 void converterTemperatura(); // Função para conversão de temperatura
+void converterDados(); // Função para conversão de unidade dos dados
 
 int main() {
     int escolha;
@@ -14,6 +15,7 @@ int main() {
         printf("2. Massa\n");
         printf("3. Volume\n");
         printf("4. Temperatura\n"); // Adicionada opção de temperatura
+        printf("5. Dados\n"); // Adicionada a opção de dados
         printf("0. Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &escolha);
@@ -23,6 +25,7 @@ int main() {
             case 2: converterMassa(); break;
             case 3: converterVolume(); break;
             case 4: converterTemperatura(); break; // Chamada para a função de temperatura
+            case 5: converterDados(); break; // Chamada da função de Dados
             case 0: printf("Saindo...\n"); break;
             default: printf("Opção inválida. Tente novamente.\n");
         }
@@ -128,5 +131,67 @@ void converterTemperatura() {
         case 5: printf("%.2lf Kelvin = %.2lf Celsius\n", valor, valor - 273.15); break;
         case 6: printf("%.2lf Kelvin = %.2lf Fahrenheit\n", valor, (valor - 273.15) * 9/5 + 32); break;
         default: printf("Opção inválida.\n");
+    }
+}
+
+#include <stdio.h>
+
+void converterDados() {
+    int escolha;
+    double valor;
+
+    printf("\n*** Conversão de Unidades de Dados ***\n");
+    printf("1. Bits para Bytes\n");
+    printf("2. Bits para Kilobytes (KB)\n");
+    printf("3. Bits para Megabytes (MB)\n");
+    printf("4. Bits para Gigabytes (GB)\n");
+    printf("5. Bits para Terabytes (TB)\n");
+    printf("6. Bytes para Kilobytes (KB)\n");
+    printf("7. Bytes para Megabytes (MB)\n");
+    printf("8. Bytes para Gigabytes (GB)\n");
+    printf("9. Bytes para Terabytes (TB)\n");
+    printf("10. Kilobytes (KB) para Megabytes (MB)\n");
+    printf("11. Kilobytes (KB) para Gigabytes (GB)\n");
+    printf("12. Kilobytes (KB) para Terabytes (TB)\n");
+    printf("13. Megabytes (MB) para Gigabytes (GB)\n");
+    printf("14. Megabytes (MB) para Terabytes (TB)\n");
+    printf("15. Gigabytes (GB) para Terabytes (TB)\n");
+    printf("16. Kilobytes (KB) para Bytes\n");
+    printf("17. Megabytes (MB) para Kilobytes (KB)\n");
+    printf("18. Gigabytes (GB) para Megabytes (MB)\n");
+    printf("19. Terabytes (TB) para Gigabytes (GB)\n");
+    printf("20. Terabytes (TB) para Megabytes (MB)\n");
+    printf("21. Terabytes (TB) para Kilobytes (KB)\n");
+    printf("22. Bytes para Bits\n");
+    printf("Escolha uma opção: ");
+    scanf("%d", &escolha);
+
+    printf("Digite o valor a ser convertido: ");
+    scanf("%lf", &valor);
+
+    switch (escolha) {
+        case 1: printf("%.2lf Bits = %.8lf Bytes\n", valor, valor / 8); break;
+        case 2: printf("%.2lf Bits = %.8lf Kilobytes (KB)\n", valor, valor / 8192); break;  // 1 KB = 8 bits * 1024
+        case 3: printf("%.2lf Bits = %.8lf Megabytes (MB)\n", valor, valor / 8388608); break;  // 1 MB = 8 * 1024 * 1024 bits
+        case 4: printf("%.2lf Bits = %.8lf Gigabytes (GB)\n", valor, valor / 8589934592.0); break;  // 1 GB = 8 * 1024 * 1024 * 1024 bits
+        case 5: printf("%.2lf Bits = %.8lf Terabytes (TB)\n", valor, valor / 8796093022208.0); break;  // 1 TB = 8 * 1024^4 bits
+        case 6: printf("%.2lf Bytes = %.8lf Kilobytes (KB)\n", valor, valor / 1024); break;
+        case 7: printf("%.2lf Bytes = %.8lf Megabytes (MB)\n", valor, valor / 1048576); break;  // 1 MB = 1024 * 1024 bytes
+        case 8: printf("%.2lf Bytes = %.8lf Gigabytes (GB)\n", valor, valor / 1073741824); break;  // 1 GB = 1024 * 1024 * 1024 bytes
+        case 9: printf("%.2lf Bytes = %.8lf Terabytes (TB)\n", valor, valor / 1099511627776.0); break;  // 1 TB = 1024^4 bytes
+        case 10: printf("%.2lf Kilobytes (KB) = %.8lf Megabytes (MB)\n", valor, valor / 1024); break;
+        case 11: printf("%.2lf Kilobytes (KB) = %.8lf Gigabytes (GB)\n", valor, valor / 1048576); break;  // 1 GB = 1024^2 KB
+        case 12: printf("%.2lf Kilobytes (KB) = %.8lf Terabytes (TB)\n", valor, valor / 1073741824.0); break;  // 1 TB = 1024^3 KB
+        case 13: printf("%.2lf Megabytes (MB) = %.8lf Gigabytes (GB)\n", valor, valor / 1024); break;
+        case 14: printf("%.2lf Megabytes (MB) = %.8lf Terabytes (TB)\n", valor, valor / 1048576); break;  // 1 TB = 1024^2 MB
+        case 15: printf("%.2lf Gigabytes (GB) = %.8lf Terabytes (TB)\n", valor, valor / 1024); break;
+        case 16: printf("%.2lf Kilobytes (KB) = %.8lf Bytes\n", valor, valor * 1024); break;
+        case 17: printf("%.2lf Megabytes (MB) = %.8lf Kilobytes (KB)\n", valor, valor * 1024); break;
+        case 18: printf("%.2lf Gigabytes (GB) = %.8lf Megabytes (MB)\n", valor, valor * 1024); break;
+        case 19: printf("%.2lf Terabytes (TB) = %.8lf Gigabytes (GB)\n", valor, valor * 1024); break;
+        case 20: printf("%.2lf Terabytes (TB) = %.8lf Megabytes (MB)\n", valor, valor * 1048576); break;  // 1 TB = 1024 * 1024 MB
+        case 21: printf("%.2lf Terabytes (TB) = %.8lf Kilobytes (KB)\n", valor, valor * 1073741824.0); break;  // 1 TB = 1024^3 KB
+        case 22: printf("%.2lf Bytes = %.8lf Bits\n", valor, valor * 8); break;
+        default: printf("Opção inválida.\n"); break;
     }
 }
