@@ -161,7 +161,6 @@ void converterVelocidade() {
     static char unidade[4][5] = {"m/s", "km/h", "mph", "kn"};
     static char mensagem[2][39] = {"Digite a opcao da unidade de entrada: ",
                                    "Digite a opcao da unidade de saida: "};
-
     char opc[2];    //opc[0] - Opção do menu para a unidade de entrada
                     //opc[1] - Opção do menu para a unidade de saída
 
@@ -169,10 +168,15 @@ void converterVelocidade() {
     float saida;        //Valor numérico da velocidade convertida
 
     printf("-----------------------------------------------------------\n"
+           "*** Conversao de Velocidade ***\n\n"
            "[1] metros por segundo (m/s)\n"
            "[2] quilometros por hora (km/h)\n"
            "[3] milhas por hora (mph)\n"
            "[4] nos (kn)\n\n");
+
+    /*As opções de entrada e saída são convertidas em índices para consulta na matriz fator[4][4].
+    Após usuário digitar o valor a ser convertido, este é multiplicado pelo fator de conversão
+    guardado na matriz. O resultado é armazenado na variável saida.*/
 
     opc[0] = lerOpcao(mensagem[0], 1, 4) - 1;
     opc[1] = lerOpcao(mensagem[1], 1, 4) - 1;
@@ -181,9 +185,8 @@ void converterVelocidade() {
     while (getchar() != '\n');  //Limpa o buffer do teclado (necessário após scanf())
     saida = entrada * fator[opc[0]][opc[1]];
 
-    printf("\nDe [%s] para [%s]:\n"
-           "%f %s = %f %s",
-           unidade[opc[0]], unidade[opc[1]],
+    printf("\n%f %s = %f %s\n"
+           "<ENTER> para voltar ao menu.",
            entrada, unidade[opc[0]], saida, unidade[opc[1]]);
 
     while (getchar() != '\n');  //Espera um ENTER do usuário (apenas uma pausa)
