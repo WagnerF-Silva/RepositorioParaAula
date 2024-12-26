@@ -1,11 +1,11 @@
-#include "conversorLib.h"
+#include <stdio.h>
 //Conversor de unidades
-
+char lerOpcao(char *msg, char limite1, char limite2);
 void converterComprimento();
 void converterMassa();
 void converterVolume();
 void converterTemperatura(); // Função para conversão de temperatura
-
+void converterVelocidade();
 
 int main() {
     int escolha;
@@ -40,6 +40,17 @@ int main() {
     } while (escolha != 0);
 
     return 0;
+}
+
+char lerOpcao(char *msg, char limite1, char limite2) {
+    int opc = limite2 + 1;
+
+    do {
+        printf("%s", msg);
+        scanf("%i", &opc);
+        while (getchar() != '\n');
+    } while (opc < limite1 || opc > limite2);
+    return (char)opc;
 }
 
 void converterComprimento() {
@@ -140,4 +151,43 @@ void converterTemperatura() {
         case 6: printf("%.2lf Kelvin = %.2lf Fahrenheit\n", valor, (valor - 273.15) * 9/5 + 32); break;
         default: printf("Opção inválida.\n");
     }
+}
+
+void converterVelocidade() {
+    static const float fator[4][4] = {{1.000000, 3.600000, 2.236936, 1.943844},
+                                      {0.277778, 1.000000, 0.621371, 0.539957},
+                                      {0.447040, 1.609344, 1.000000, 0.868976},
+                                      {0.514444, 1.852000, 1.150779, 1.000000}};
+    static char unidade[4][5] = {"m/s", "km/h", "mph", "kn"};
+    static char mensagem[2][39] = {"Digite a opcao da unidade de entrada: ",
+                                   "Digite a opcao da unidade de saida: "};
+    char opc[2];    //opc[0] - Opção do menu para a unidade de entrada
+                    //opc[1] - Opção do menu para a unidade de saída
+
+    float entrada = 0;  //Valor numérico da velocidade de entrada
+    float saida;        //Valor numérico da velocidade convertida
+
+    printf("-----------------------------------------------------------\n"
+           "*** Conversao de Velocidade ***\n\n"
+           "[1] metros por segundo (m/s)\n"
+           "[2] quilometros por hora (km/h)\n"
+           "[3] milhas por hora (mph)\n"
+           "[4] nos (kn)\n\n");
+
+    /*As opções de entrada e saída são convertidas em índices para consulta na matriz fator[4][4].
+    Após usuário digitar o valor a ser convertido, este é multiplicado pelo fator de conversão
+    guardado na matriz. O resultado é armazenado na variável saida.*/
+
+    opc[0] = lerOpcao(mensagem[0], 1, 4) - 1;
+    opc[1] = lerOpcao(mensagem[1], 1, 4) - 1;
+    printf("Digite o valor a ser convertido: ");
+    scanf("%f", &entrada);
+    while (getchar() != '\n');  //Limpa o buffer do teclado (necessário após scanf())
+    saida = entrada * fator[opc[0]][opc[1]];
+
+    printf("\n%f %s = %f %s\n"
+           "<ENTER> para voltar ao menu.",
+           entrada, unidade[opc[0]], saida, unidade[opc[1]]);
+
+    while (getchar() != '\n');  //Espera um ENTER do usuário (apenas uma pausa)
 }
