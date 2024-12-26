@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 #include <math.h>
 
@@ -15,7 +15,7 @@ int main() {
     printf("Digite a unidade final (W, kW, CV): ");
     scanf(" %c", &unidade_final);
 
-    // Conversões
+    // Conversões 0
     switch (unidade_inicial) {
         case 'W':
             switch (unidade_final) {

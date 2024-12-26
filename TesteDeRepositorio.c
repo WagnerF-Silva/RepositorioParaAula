@@ -176,7 +176,7 @@ void converterVelocidade() {
 
     /*As opções de entrada e saída são convertidas em índices para consulta na matriz fator[4][4].
     Após usuário digitar o valor a ser convertido, este é multiplicado pelo fator de conversão
-    guardado na matriz. O resultado é armazenado na variável saida.*/
+    guardado na matriz. O resultado é armazenado na variável saida   .*/
 
     opc[0] = lerOpcao(mensagem[0], 1, 4) - 1;
     opc[1] = lerOpcao(mensagem[1], 1, 4) - 1;
